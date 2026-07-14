@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DealerVerse AI | Manager Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2e3039",
+                        "on-tertiary-container": "#ffede6",
+                        "on-primary": "#ffffff",
+                        "primary": "#004ac6",
+                        "on-surface-variant": "#434655",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "outline": "#737686",
+                        "on-background": "#191b23",
+                        "on-secondary-container": "#54647a",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d9d9e5",
+                        "surface-container-low": "#f3f3fe",
+                        "surface": "#faf8ff",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary-container": "#bc4800",
+                        "on-secondary-fixed": "#0b1c30",
+                        "background": "#faf8ff",
+                        "secondary": "#505f76",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#faf8ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary-fixed": "#00174b",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e1e2ed",
+                        "on-primary-container": "#eeefff",
+                        "outline-variant": "#c3c6d7",
+                        "primary-container": "#2563eb",
+                        "surface-container-high": "#e7e7f3",
+                        "surface-container": "#ededf9",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "inverse-on-surface": "#f0f0fb",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-highest": "#e1e2ed",
+                        "on-surface": "#191b23",
+                        "surface-tint": "#0053db",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#943700",
+                        "primary-fixed-dim": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "xl": "2rem",
+                        "container-max": "1440px",
+                        "xs": "0.25rem",
+                        "md": "1rem",
+                        "gutter": "24px",
+                        "sm": "0.5rem",
+                        "base": "4px",
+                        "lg": "1.5rem",
+                        "2xl": "3rem"
+                    },
+                    "fontFamily": {
+                        "body": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf8ff; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .trend-up { color: #10b981; }
+        .trend-down { color: #ef4444; }
+        .bento-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .bento-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08); }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface border-r border-outline-variant flex flex-col py-lg px-md z-50">
+<div class="mb-lg px-md">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">DealerVerse AI</h1>
+<p class="text-label-md font-label-md text-on-surface-variant opacity-70">Enterprise SaaS</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-xl p-3 border-l-4 border-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-md text-label-md">Mission Center</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+<span class="font-label-md text-label-md">Departments</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-md text-label-md">AI Center</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-label-md text-label-md">Fair Play</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-md text-label-md">Leaderboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-md text-label-md">Quests</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label-md text-label-md">Notifications</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<div class="ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-40 w-full glass border-b border-outline-variant shadow-sm h-16 flex justify-between items-center px-gutter">
+<div class="flex items-center gap-gutter">
+<h2 class="font-headline-md text-headline-md font-black text-on-surface">DealerVerse AI</h2>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-label-md font-medium">
+<span>Central Branch</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded-full text-label-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none w-64" placeholder="Search Missions..." type="text"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant">
+<div class="text-right">
+<p class="text-label-md font-bold text-on-surface leading-tight">Rajesh Sharma</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Branch Manager</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary-fixed shadow-sm" data-alt="Professional headshot of Rajesh Sharma, a middle-aged South Asian male with a confident smile, wearing a sharp charcoal grey business suit and a light blue tie. The background is a brightly lit, modern corporate office with soft bokeh effects and cool blue and white tones that match a premium enterprise dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYfGaVyoBnS089VH6FHK3stRLQ8yhU6KpaLJ0CYbnrl2LTybR9FTZJNvJTYecEgjev6FxJd2igU3-SIIF_ABBpfU5H5VcFCNzsg7ga88TDV91OPD7jvDP_LeFHWoFoDU-3J-V-RH1d8JevikKZ8TDxpdgq1eOA1cex4YH6PZtxaPQAI6a8e_iZ31lIR2uEHsGw8OYyfaU2N5rXbjULEF38VKshy9ioCtGQYQc4OwzhBxRw5xwQXTuJmh9e5reGTpkxCpkfcEfyctFy"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-gutter flex gap-gutter overflow-x-hidden">
+<!-- Left Content Area (Grid Layout) -->
+<div class="flex-1 space-y-gutter">
+<!-- Welcome Section -->
+<section>
+<h3 class="font-headline-xl text-headline-xl text-on-surface">Good Morning, Rajesh Sharma</h3>
+<p class="text-on-surface-variant text-body-lg">Monday, October 23, 2023 • <span class="text-primary font-semibold">Live from Central Branch</span></p>
+</section>
+<!-- KPI Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+<!-- KPI 1 -->
+<div class="bento-card bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-semibold text-on-surface-variant">Today's Deliveries</span>
+<span class="material-symbols-outlined text-primary" data-icon="local_shipping">local_shipping</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">42</span>
+<span class="text-[10px] font-bold trend-up">+12%</span>
+</div>
+<div class="mt-3 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 70%"></div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bento-card bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-semibold text-on-surface-variant">Active Missions</span>
+<span class="material-symbols-outlined text-secondary" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">18</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Stable</span>
+</div>
+<div class="mt-3 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 45%"></div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bento-card bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-semibold text-on-surface-variant">Pending Approvals</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="fact_check">fact_check</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">07</span>
+<span class="text-[10px] font-bold trend-down">+2</span>
+</div>
+<div class="mt-3 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 20%"></div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bento-card bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-semibold text-on-surface-variant">Avg Delivery Time</span>
+<span class="material-symbols-outlined text-primary" data-icon="timer">timer</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">1.4h</span>
+<span class="text-[10px] font-bold trend-up">-4m</span>
+</div>
+<div class="mt-3 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 85%"></div>
+</div>
+</div>
+<!-- KPI 5 -->
+<div class="bento-card bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-semibold text-on-surface-variant">CSAT Score</span>
+<span class="material-symbols-outlined text-primary" data-icon="thumb_up">thumb_up</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">98%</span>
+<span class="text-[10px] font-bold trend-up">+0.5%</span>
+</div>
+<div class="mt-3 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 98%"></div>
+</div>
+</div>
+<!-- KPI 6 -->
+<div class="bento-card bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-md font-semibold text-on-surface-variant">Revenue Today</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="payments">payments</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">$142.5k</span>
+<span class="text-[10px] font-bold trend-up">+8%</span>
+</div>
+<div class="mt-3 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 62%"></div>
+</div>
+</div>
+</section>
+<!-- Main Content Bento Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Mission Overview -->
+<div class="col-span-12 lg:col-span-5 bg-surface-container-lowest rounded-2xl border border-outline-variant p-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-headline-md text-headline-md font-bold">Mission Overview</h4>
+<span class="px-2 py-1 bg-primary-fixed text-on-primary-fixed rounded text-label-sm">Live</span>
+</div>
+<div class="flex items-center gap-8">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="65.6" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-black">82%</span>
+<span class="text-[10px] uppercase text-on-surface-variant font-bold">Done</span>
+</div>
+</div>
+<div class="flex-1 space-y-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-body-md font-medium">Completed</span>
+</div>
+<span class="text-body-md font-bold">98</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="text-body-md font-medium">Delayed</span>
+</div>
+<span class="text-body-md font-bold text-tertiary">8</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<span class="text-body-md font-medium">Blocked</span>
+</div>
+<span class="text-body-md font-bold text-error">2</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant text-center">
+<p class="text-label-md text-on-surface-variant">Total Managed Missions</p>
+<p class="text-4xl font-black text-primary">124</p>
+</div>
+</div>
+<!-- AI Insights -->
+<div class="col-span-12 lg:col-span-7 space-y-4">
+<div class="bg-primary/5 border border-primary/20 rounded-2xl p-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+<h4 class="font-headline-md text-headline-md font-bold text-primary">AI Strategy Insights</h4>
+</div>
+<div class="space-y-4 relative z-10">
+<div class="bg-white/80 p-4 rounded-xl border border-primary/10 shadow-sm flex gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Finance Overload Detected</p>
+<p class="text-body-md text-on-surface-variant">Move 2 executives from Sales to Finance to improve delivery output by <span class="text-primary font-bold">+8 units</span> before 5 PM.</p>
+</div>
+</div>
+<div class="bg-white/80 p-4 rounded-xl border border-primary/10 shadow-sm flex gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary">inventory_2</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">PDI Bottleneck Alert</p>
+<p class="text-body-md text-on-surface-variant">Registration delays are impacting PDI slot efficiency. Suggest merging verification workflows for the next 4 hours.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Workload Distribution -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-lg shadow-sm">
+<h4 class="text-label-md font-bold text-on-surface-variant uppercase tracking-wider mb-6">Workload Capacity vs. Utilization</h4>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-label-sm font-semibold">
+<span>Capacity (Peak)</span>
+<span>Utilization</span>
+</div>
+<div class="h-6 w-full flex bg-surface-container rounded-md overflow-hidden p-0.5">
+<div class="h-full bg-primary rounded-sm transition-all duration-1000" style="width: 85%"></div>
+<div class="h-full bg-primary/20 ml-1 rounded-sm" style="width: 15%"></div>
+</div>
+</div>
+<div class="flex justify-between gap-4">
+<div class="flex-1 p-3 rounded-xl bg-surface-container-low border border-outline-variant">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Active Staff</p>
+<p class="text-xl font-bold">142</p>
+</div>
+<div class="flex-1 p-3 rounded-xl bg-surface-container-low border border-outline-variant">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Idle Buffer</p>
+<p class="text-xl font-bold">12%</p>
+</div>
+<div class="flex-1 p-3 rounded-xl bg-primary/10 border border-primary/20">
+<p class="text-[10px] text-primary uppercase font-bold">Risk Level</p>
+<p class="text-xl font-bold text-primary">Low</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Department Health -->
+<div class="col-span-12">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-headline-md text-headline-md font-bold">Department Health</h4>
+<button class="text-primary font-bold text-label-md hover:underline">View All Metrics</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-4">
+<!-- Dept Card -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm group">
+<div class="flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-md font-bold">Sales</span>
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+</div>
+<div class="mb-4">
+<p class="text-3xl font-black text-on-surface">94%</p>
+<p class="text-[10px] text-green-600 font-bold">GOOD</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant">
+<p class="text-[10px] text-on-surface-variant uppercase">Pending</p>
+<p class="text-body-md font-bold">12 Tasks</p>
+</div>
+</div>
+</div>
+<!-- Dept Card Alert -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-tertiary shadow-sm">
+<div class="flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-md font-bold">Finance</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+<div class="mb-4">
+<p class="text-3xl font-black text-on-surface">68%</p>
+<p class="text-[10px] text-tertiary font-bold">ALERT</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant">
+<p class="text-[10px] text-on-surface-variant uppercase">Pending</p>
+<p class="text-body-md font-bold">42 Tasks</p>
+</div>
+</div>
+</div>
+<!-- Repeat Depts -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex flex-col h-full">
+<span class="text-label-md font-bold mb-4">Accounts</span>
+<div class="mb-4">
+<p class="text-3xl font-black text-on-surface">88%</p>
+<p class="text-[10px] text-green-600 font-bold">STABLE</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant">
+<p class="text-[10px] text-on-surface-variant uppercase">Pending</p>
+<p class="text-body-md font-bold">04 Tasks</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex flex-col h-full">
+<span class="text-label-md font-bold mb-4">Reg.</span>
+<div class="mb-4">
+<p class="text-3xl font-black text-on-surface">82%</p>
+<p class="text-[10px] text-green-600 font-bold">STABLE</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant">
+<p class="text-[10px] text-on-surface-variant uppercase">Pending</p>
+<p class="text-body-md font-bold">18 Tasks</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex flex-col h-full">
+<span class="text-label-md font-bold mb-4">PDI</span>
+<div class="mb-4">
+<p class="text-3xl font-black text-on-surface">91%</p>
+<p class="text-[10px] text-green-600 font-bold">GOOD</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant">
+<p class="text-[10px] text-on-surface-variant uppercase">Pending</p>
+<p class="text-body-md font-bold">06 Tasks</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex flex-col h-full">
+<span class="text-label-md font-bold mb-4">Cust. Care</span>
+<div class="mb-4">
+<p class="text-3xl font-black text-on-surface">95%</p>
+<p class="text-[10px] text-green-600 font-bold">GOOD</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant">
+<p class="text-[10px] text-on-surface-variant uppercase">Pending</p>
+<p class="text-body-md font-bold">02 Tasks</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex flex-col h-full">
+<span class="text-label-md font-bold mb-4">EDP</span>
+<div class="mb-4">
+<p class="text-3xl font-black text-on-surface">89%</p>
+<p class="text-[10px] text-green-600 font-bold">STABLE</p>
+</div>
+<div class="mt-auto pt-2 border-t border-outline-variant">
+<p class="text-[10px] text-on-surface-variant uppercase">Pending</p>
+<p class="text-body-md font-bold">05 Tasks</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Booking Pipeline Flow -->
+<div class="col-span-12 bg-surface-container-lowest rounded-2xl border border-outline-variant p-lg shadow-sm">
+<h4 class="font-headline-md text-headline-md font-bold mb-8">Booking Pipeline Journey</h4>
+<div class="flex flex-wrap lg:flex-nowrap items-center justify-between gap-2 overflow-x-auto no-scrollbar pb-4">
+<!-- Step 1 -->
+<div class="flex-1 min-w-[140px] relative">
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant text-center">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase">Enquiry</p>
+<p class="text-2xl font-black">214</p>
+<p class="text-[10px] text-on-surface-variant">0.5h avg</p>
+</div>
+<div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10">
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex-1 min-w-[140px] relative">
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant text-center">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase">Booking</p>
+<p class="text-2xl font-black">84</p>
+<p class="text-[10px] text-on-surface-variant">2.1h avg</p>
+</div>
+<div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10">
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+<!-- Step 3 (Alert) -->
+<div class="flex-1 min-w-[140px] relative">
+<div class="bg-tertiary/10 p-4 rounded-xl border border-tertiary/30 text-center">
+<p class="text-[10px] font-bold text-tertiary uppercase">Finance</p>
+<p class="text-2xl font-black text-tertiary">56</p>
+<p class="text-[10px] text-tertiary font-bold">14.2h delay</p>
+</div>
+<div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10">
+<span class="material-symbols-outlined text-tertiary/50">chevron_right</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex-1 min-w-[140px] relative">
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant text-center">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase">Invoice</p>
+<p class="text-2xl font-black">42</p>
+<p class="text-[10px] text-on-surface-variant">1.2h avg</p>
+</div>
+<div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10">
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="flex-1 min-w-[140px] relative">
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant text-center">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase">Reg.</p>
+<p class="text-2xl font-black">28</p>
+<p class="text-[10px] text-on-surface-variant">4.5h avg</p>
+</div>
+<div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10">
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+<!-- Step 6 -->
+<div class="flex-1 min-w-[140px] relative">
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant text-center">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase">PDI</p>
+<p class="text-2xl font-black">15</p>
+<p class="text-[10px] text-on-surface-variant">1.8h avg</p>
+</div>
+<div class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10">
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+<!-- Step 7 (Final) -->
+<div class="flex-1 min-w-[140px]">
+<div class="bg-primary p-4 rounded-xl text-center text-white">
+<p class="text-[10px] font-bold uppercase opacity-80">Delivery</p>
+<p class="text-2xl font-black">42</p>
+<p class="text-[10px] opacity-80">Target Met</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mt-gutter">
+<!-- Today's Quests -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-lg shadow-sm">
+<div class="flex justify-between items-center mb-4">
+<h5 class="text-label-md font-black uppercase tracking-wider">Today's Quests</h5>
+<span class="text-primary font-bold text-label-sm">2/5 Done</span>
+</div>
+<div class="space-y-3">
+<div class="flex gap-3 items-start p-2 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-5 h-5 rounded border-2 border-primary mt-0.5 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[14px] text-primary hidden group-hover:block">check</span>
+</div>
+<p class="text-body-md text-on-surface leading-tight">Review 5 high-priority finance missions</p>
+</div>
+<div class="flex gap-3 items-start p-2 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-5 h-5 rounded border-2 border-primary mt-0.5 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[14px] text-primary hidden group-hover:block">check</span>
+</div>
+<p class="text-body-md text-on-surface leading-tight">Approve Q3 branch inventory restock</p>
+</div>
+<div class="flex gap-3 items-start p-2 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer opacity-50 line-through">
+<div class="w-5 h-5 rounded bg-primary mt-0.5 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[14px] text-white">check</span>
+</div>
+<p class="text-body-md text-on-surface-variant leading-tight">Host 10:00 AM Departmental Stand-up</p>
+</div>
+</div>
+<button class="w-full mt-6 py-2 border border-outline-variant rounded-xl text-label-md font-bold text-on-surface-variant hover:bg-surface-container transition-colors">View All Quests</button>
+</div>
+<!-- Live Activity Feed -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-lg shadow-sm">
+<h5 class="text-label-md font-black uppercase tracking-wider mb-6">Live Activity Feed</h5>
+<div class="relative space-y-4 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-[1px] before:bg-outline-variant">
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-primary-fixed border-4 border-surface shadow-sm"></div>
+<p class="text-[10px] text-on-surface-variant font-bold mb-1">09:42 AM</p>
+<p class="text-body-md text-on-surface">Mission #4421 Approved by <span class="font-bold">Ananya R.</span></p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-green-200 border-4 border-surface shadow-sm"></div>
+<p class="text-[10px] text-on-surface-variant font-bold mb-1">09:38 AM</p>
+<p class="text-body-md text-on-surface">Vehicle Delivered: <span class="font-bold">BMW X5</span></p>
+</div>
+</div>
+</div>
+<!-- Support & Health -->
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant shadow-sm">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+<div class="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
+</div>
+<div>
+<p class="text-label-md font-bold">System Health</p>
+<p class="text-[10px] text-on-surface-variant font-medium">All nodes operational</p>
+</div>
+</div>
+</div>
+<div class="p-6 bg-primary rounded-2xl text-white shadow-lg relative overflow-hidden group cursor-pointer">
+<div class="relative z-10">
+<p class="font-bold mb-1">Need Enterprise Support?</p>
+<p class="text-xs opacity-80 mb-4">Chat with our dedicated AI concierge.</p>
+<button class="bg-white text-primary px-4 py-1.5 rounded-lg text-xs font-bold">Launch Chat</button>
+</div>
+<div class="absolute -bottom-4 -right-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-8xl">support_agent</span>
+</div>
+</div>
+</div>
+</section></div>
+<!-- Right Utility Panel -->
+</main>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-gutter right-gutter w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+<script>
+        // Micro-interactions and real-time feel
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate trend bars on load
+            const bars = document.querySelectorAll('.h-full.bg-primary, .h-full.bg-secondary, .h-full.bg-tertiary');
+            bars.forEach(bar => {
+                const targetWidth = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.transition = 'width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    bar.style.width = targetWidth;
+                }, 300);
+            });
+
+            // Smooth search focus
+            const searchInput = document.querySelector('input[type="text"]');
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('scale-105');
+                searchInput.parentElement.style.transition = 'transform 0.3s ease';
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('scale-105');
+            });
+        });
+    </script>
+</body></html>

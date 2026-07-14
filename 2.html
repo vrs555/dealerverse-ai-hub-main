@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DealerVerse AI | Enterprise SaaS for Modern Dealerships</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#b4c5ff",
+                        "inverse-on-surface": "#f0f0fb",
+                        "surface-tint": "#0053db",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-high": "#e7e7f3",
+                        "on-surface-variant": "#434655",
+                        "tertiary": "#943700",
+                        "tertiary-container": "#bc4800",
+                        "surface-bright": "#faf8ff",
+                        "secondary": "#505f76",
+                        "on-background": "#191b23",
+                        "inverse-surface": "#2e3039",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-container": "#ededf9",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e1e2ed",
+                        "primary-fixed": "#dbe1ff",
+                        "primary": "#004ac6",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error-container": "#ffdad6",
+                        "surface": "#faf8ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-surface": "#191b23",
+                        "on-secondary": "#ffffff",
+                        "outline": "#737686",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-variant": "#e1e2ed",
+                        "surface-container-low": "#f3f3fe",
+                        "on-secondary-fixed": "#0b1c30",
+                        "background": "#faf8ff",
+                        "surface-dim": "#d9d9e5",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-tertiary-container": "#ffede6",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-fixed-dim": "#b7c8e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "0.5rem",
+                        "margin-mobile": "16px",
+                        "xl": "2rem",
+                        "base": "4px",
+                        "lg": "1.5rem",
+                        "md": "1rem",
+                        "2xl": "3rem",
+                        "xs": "0.25rem",
+                        "container-max": "1440px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .workflow-gradient {
+            background: linear-gradient(90deg, #004ac6 0%, #2563eb 50%, #004ac6 100%);
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(180px, auto);
+            gap: 1.5rem;
+        }
+        .bento-item-large { grid-column: span 2; grid-row: span 2; }
+        .bento-item-medium { grid-column: span 2; }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full glass-nav border-b border-outline-variant/30">
+<div class="max-w-container-max mx-auto h-16 px-gutter flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-black text-primary">DealerVerse AI</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Platform</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Solutions</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Resources</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden sm:block font-label-md text-label-md text-on-surface hover:text-primary font-bold transition-colors">Login</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md font-bold hover:bg-primary-container transition-all hover:shadow-lg active:scale-95">Request Demo</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-20 pb-32 overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter text-center">
+<div class="inline-flex items-center gap-2 bg-secondary-container/50 px-4 py-1.5 rounded-full mb-8 border border-primary/10">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-md text-label-md text-on-secondary-container">New: Enterprise AI Fair Play Engine v2.0</span>
+</div>
+<h1 class="font-headline-xl text-[48px] md:text-[64px] leading-tight md:leading-none font-extrabold text-on-surface mb-6 max-w-4xl mx-auto">
+                    Transform Your Dealership Into an <span class="text-primary italic">AI-Powered</span> High Performance Team
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    DealerVerse AI helps dealerships improve productivity, reduce delivery delays, and motivate employees through intelligent gamification and workflow optimization.
+                </p>
+<div class="flex flex-wrap justify-center gap-4 mb-20">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-label-md text-label-md font-bold hover:bg-primary-container transition-all shadow-xl shadow-primary/20">Request Free Demo</button>
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface px-8 py-4 rounded-xl font-label-md text-label-md font-bold hover:bg-surface-container transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">play_circle</span>
+                        Watch Product Tour
+                    </button>
+</div>
+<!-- Workflow Illustration -->
+<div class="relative bg-surface-container rounded-3xl p-8 md:p-12 border border-outline-variant/50 max-w-5xl mx-auto shadow-2xl">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center text-primary border-2 border-primary/20">
+<span class="material-symbols-outlined text-[32px]">sell</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Sales</span>
+</div>
+<!-- Path -->
+<div class="hidden md:block flex-1 h-1 bg-outline-variant relative overflow-hidden rounded-full">
+<div class="workflow-gradient absolute inset-0 w-1/2"></div>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center text-primary border-2 border-primary/20">
+<span class="material-symbols-outlined text-[32px]">account_balance</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Finance</span>
+</div>
+<!-- Path -->
+<div class="hidden md:block flex-1 h-1 bg-outline-variant relative overflow-hidden rounded-full">
+<div class="workflow-gradient absolute inset-0 w-1/2"></div>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center text-primary border-2 border-primary/20">
+<span class="material-symbols-outlined text-[32px]">badge</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Accounts</span>
+</div>
+<!-- Path -->
+<div class="hidden md:block flex-1 h-1 bg-outline-variant relative overflow-hidden rounded-full">
+<div class="workflow-gradient absolute inset-0 w-1/2"></div>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center text-primary border-2 border-primary/20">
+<span class="material-symbols-outlined text-[32px]">assignment_turned_in</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">PDI</span>
+</div>
+<!-- Path -->
+<div class="hidden md:block flex-1 h-1 bg-outline-variant relative overflow-hidden rounded-full">
+<div class="workflow-gradient absolute inset-0 w-1/2"></div>
+</div>
+<!-- Step 5 -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-20 h-20 rounded-full bg-primary shadow-xl shadow-primary/30 flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[40px]">local_shipping</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-primary">Delivery</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent rounded-3xl pointer-events-none"></div>
+</div>
+</div>
+</section>
+<!-- Trusted By Section -->
+<section class="py-12 border-y border-outline-variant/30 bg-surface-container-low/50">
+<div class="max-w-container-max mx-auto px-gutter">
+<p class="text-center font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-10">Trusted by World Class Automotive Groups</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-60 grayscale hover:grayscale-0 transition-all">
+<div class="h-8 w-24 bg-on-surface/20 rounded"></div> <!-- Toyota Placeholder -->
+<div class="h-8 w-24 bg-on-surface/20 rounded"></div> <!-- BMW Placeholder -->
+<div class="h-8 w-24 bg-on-surface/20 rounded"></div> <!-- Hyundai Placeholder -->
+<div class="h-8 w-24 bg-on-surface/20 rounded"></div> <!-- Honda Placeholder -->
+<div class="h-8 w-24 bg-on-surface/20 rounded"></div> <!-- Mercedes Placeholder -->
+<div class="h-8 w-24 bg-on-surface/20 rounded"></div> <!-- Ford Placeholder -->
+</div>
+</div>
+</section>
+<!-- Problem Section -->
+<section class="py-24 bg-white">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface mb-4">The Friction in Modern Dealerships</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Manual workflows and lack of visibility are costing you millions in lost efficiency and employee turnover.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Problem Card 1 -->
+<div class="group p-8 rounded-2xl border border-outline-variant hover:border-error transition-all hover:shadow-lg">
+<div class="w-12 h-12 rounded-xl bg-error-container/30 text-error flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">Delivery Delays</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Vehicles sitting in stock for days because of registration lags and communication gaps.</p>
+</div>
+<!-- Problem Card 2 -->
+<div class="group p-8 rounded-2xl border border-outline-variant hover:border-error transition-all hover:shadow-lg">
+<div class="w-12 h-12 rounded-xl bg-error-container/30 text-error flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">Poor Collaboration</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Siloed departments working on disconnected spreadsheets with zero real-time alignment.</p>
+</div>
+<!-- Problem Card 3 -->
+<div class="group p-8 rounded-2xl border border-outline-variant hover:border-error transition-all hover:shadow-lg">
+<div class="w-12 h-12 rounded-xl bg-error-container/30 text-error flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">sentiment_dissatisfied</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">Low Motivation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">High employee burnout and attrition due to repetitive manual tasks and lack of recognition.</p>
+</div>
+<!-- Problem Card 4 -->
+<div class="group p-8 rounded-2xl border border-outline-variant hover:border-error transition-all hover:shadow-lg">
+<div class="w-12 h-12 rounded-xl bg-error-container/30 text-error flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">bar_chart</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">No Visibility</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Managers guessing team performance instead of using data-driven insights.</p>
+</div>
+<!-- Problem Card 5 -->
+<div class="group p-8 rounded-2xl border border-outline-variant hover:border-error transition-all hover:shadow-lg">
+<div class="w-12 h-12 rounded-xl bg-error-container/30 text-error flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">leak_add</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">Workflow Bottlenecks</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Critical tasks stuck in "waiting" states without any automated escalation or alerts.</p>
+</div>
+<!-- Problem Card 6 -->
+<div class="group p-8 rounded-2xl border border-outline-variant hover:border-error transition-all hover:shadow-lg">
+<div class="w-12 h-12 rounded-xl bg-error-container/30 text-error flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">touch_app</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">Manual Tracking</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Wasted hours manually updating statuses and checking phone calls for updates.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Solutions Bento Grid -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-2xl">
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface mb-4">A Unified Operating System for Dealerships</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">DealerVerse AI synchronizes every department into a single, high-output ecosystem.</p>
+</div>
+<button class="bg-on-surface text-surface py-3 px-6 rounded-full font-label-md text-label-md font-bold hover:bg-on-surface-variant transition-all">Explore All Features</button>
+</div>
+<div class="bento-grid">
+<!-- Mission Center -->
+<div class="bento-item-large bg-primary text-on-primary p-10 rounded-3xl relative overflow-hidden group cursor-pointer">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-[40px] mb-6">rocket_launch</span>
+<h3 class="font-headline-xl text-headline-xl font-bold mb-4">Mission Center</h3>
+<p class="font-body-lg text-body-lg opacity-90 max-w-xs">Track every vehicle journey from booking to driveway with precision timelines.</p>
+</div>
+<div class="absolute bottom-[-20%] right-[-10%] w-2/3 opacity-20 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+</div>
+</div>
+<!-- AI Fair Play -->
+<div class="bg-white p-8 rounded-3xl border border-outline-variant flex flex-col justify-between group cursor-pointer">
+<span class="material-symbols-outlined text-primary text-[32px] group-hover:rotate-12 transition-transform">balance</span>
+<div>
+<h3 class="font-headline-md text-headline-md font-bold mb-2">AI Fair Play</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Transparent workload balancing and unbiased performance measurement.</p>
+</div>
+</div>
+<!-- Department Dashboards -->
+<div class="bg-white p-8 rounded-3xl border border-outline-variant flex flex-col justify-between group cursor-pointer">
+<span class="material-symbols-outlined text-primary text-[32px] group-hover:rotate-12 transition-transform">schema</span>
+<div>
+<h3 class="font-headline-md text-headline-md font-bold mb-2">Dashboards</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Dedicated views for Sales, Finance, Accounts, and Service teams.</p>
+</div>
+</div>
+<!-- AI Insights -->
+<div class="bento-item-medium bg-tertiary text-on-tertiary p-8 rounded-3xl relative overflow-hidden group cursor-pointer">
+<div class="relative z-10 flex flex-col h-full justify-between">
+<span class="material-symbols-outlined text-[32px]">psychology</span>
+<div>
+<h3 class="font-headline-md text-headline-md font-bold mb-2">Predictive AI Insights</h3>
+<p class="font-body-md text-body-md opacity-90">Detect potential bottlenecks 48 hours before they happen using machine learning.</p>
+</div>
+</div>
+</div>
+<!-- Leaderboards -->
+<div class="bg-secondary-container p-8 rounded-3xl flex flex-col justify-between group cursor-pointer">
+<span class="material-symbols-outlined text-on-secondary-container text-[32px]">emoji_events</span>
+<div>
+<h3 class="font-headline-md text-headline-md font-bold mb-2">Leaderboards</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Real-time performance rankings to spark healthy internal competition.</p>
+</div>
+</div>
+<!-- Achievements -->
+<div class="bg-white p-8 rounded-3xl border border-outline-variant flex flex-col justify-between group cursor-pointer">
+<span class="material-symbols-outlined text-primary text-[32px]">stars</span>
+<div>
+<h3 class="font-headline-md text-headline-md font-bold mb-2">Achievements</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Digital rewards and badges for top performers and process adherence.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission Center Showcase -->
+<section class="py-24 bg-white overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex flex-col lg:flex-row items-center gap-20">
+<div class="w-full lg:w-1/2">
+<span class="font-label-md text-label-md font-black text-primary uppercase tracking-widest mb-4 block">The Mission Center</span>
+<h2 class="font-headline-xl text-headline-xl font-extrabold text-on-surface mb-6 leading-tight">Total Visibility Into Every Deal Progress</h2>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">timeline</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface">Universal Tracking</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">From Booking to PDI to RTO — track every milestone on a single unified timeline.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">notification_important</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface">Auto-Escalation</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Notify department heads automatically when a vehicle stays in one stage too long.</p>
+</div>
+</div>
+</div>
+<button class="mt-10 bg-primary text-on-primary px-8 py-4 rounded-xl font-label-md text-label-md font-bold hover:shadow-xl transition-all">Try Mission Center</button>
+</div>
+<div class="w-full lg:w-1/2 relative">
+<div class="bg-surface-container rounded-3xl p-4 shadow-2xl border border-outline-variant transform rotate-2">
+<div class="bg-white rounded-2xl p-6 shadow-inner overflow-hidden">
+<div class="flex items-center justify-between mb-6">
+<h5 class="font-headline-md text-headline-md font-bold">Deal Timeline: VIN 4921-X</h5>
+<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">On Schedule</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 border-l-4 border-primary pl-4">
+<span class="w-24 font-label-md text-label-md opacity-50">Booking</span>
+<span class="font-label-md text-label-md font-bold">Completed Oct 12, 10:45 AM</span>
+</div>
+<div class="flex items-center gap-4 border-l-4 border-primary pl-4">
+<span class="w-24 font-label-md text-label-md opacity-50">Finance</span>
+<span class="font-label-md text-label-md font-bold">Approved Oct 14, 02:20 PM</span>
+</div>
+<div class="flex items-center gap-4 border-l-4 border-outline pl-4 opacity-40">
+<span class="w-24 font-label-md text-label-md">PDI Check</span>
+<span class="font-label-md text-label-md">Scheduled Oct 16, 09:00 AM</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Features -->
+<section class="py-24 bg-on-background text-white rounded-[40px] mx-4 my-8">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl font-bold mb-4">The Engine Under the Hood</h2>
+<p class="font-body-md text-body-md text-surface-variant max-w-xl mx-auto">Proprietary AI algorithms trained on millions of dealership transactions.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- AI Card 1 -->
+<div class="p-8 rounded-3xl bg-inverse-surface border border-outline/30 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary mb-6 text-[32px]">clear_all</span>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">Delay Prediction</h3>
+<p class="font-body-md text-body-md text-surface-variant">AI predicts delays based on RTO workload and bank processing speeds.</p>
+</div>
+<!-- AI Card 2 -->
+<div class="p-8 rounded-3xl bg-inverse-surface border border-outline/30 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary mb-6 text-[32px]">security</span>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">Spam Detection</h3>
+<p class="font-body-md text-body-md text-surface-variant">Identify and filter fake bookings or duplicate enquiries automatically.</p>
+</div>
+<!-- AI Card 3 -->
+<div class="p-8 rounded-3xl bg-inverse-surface border border-outline/30 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary mb-6 text-[32px]">smart_button</span>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">Action Recommendations</h3>
+<p class="font-body-md text-body-md text-surface-variant">Daily priority lists for staff members based on high-probability deliveries.</p>
+</div>
+<!-- AI Card 4 -->
+<div class="p-8 rounded-3xl bg-inverse-surface border border-outline/30 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary mb-6 text-[32px]">query_stats</span>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">Bottleneck ID</h3>
+<p class="font-body-md text-body-md text-surface-variant">Real-time mapping of process flow to identify where energy is being wasted.</p>
+</div>
+<!-- AI Card 5 -->
+<div class="p-8 rounded-3xl bg-inverse-surface border border-outline/30 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary mb-6 text-[32px]">balance</span>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">Fairness Engine</h3>
+<p class="font-body-md text-body-md text-surface-variant">Equitable distribution of leads and files across team members.</p>
+</div>
+<!-- AI Card 6 -->
+<div class="p-8 rounded-3xl bg-inverse-surface border border-outline/30 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary mb-6 text-[32px]">equalizer</span>
+<h3 class="font-headline-md text-headline-md font-bold mb-3">Workload Balancing</h3>
+<p class="font-body-md text-body-md text-surface-variant">Prevents burn-out by dynamically shifting tasks when someone is overloaded.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Icon Grid -->
+<section class="py-24 bg-white">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-12">
+<div class="flex flex-col items-center gap-4 text-center">
+<span class="material-symbols-outlined text-primary text-[40px]">rocket_launch</span>
+<span class="font-label-md text-label-md font-bold">Mission Center</span>
+</div>
+<div class="flex flex-col items-center gap-4 text-center">
+<span class="material-symbols-outlined text-primary text-[40px]">analytics</span>
+<span class="font-label-md text-label-md font-bold">Analytics</span>
+</div>
+<div class="flex flex-col items-center gap-4 text-center">
+<span class="material-symbols-outlined text-primary text-[40px]">person_check</span>
+<span class="font-label-md text-label-md font-bold">Employee Dashboard</span>
+</div>
+<div class="flex flex-col items-center gap-4 text-center">
+<span class="material-symbols-outlined text-primary text-[40px]">groups_2</span>
+<span class="font-label-md text-label-md font-bold">Dept Dashboards</span>
+</div>
+<div class="flex flex-col items-center gap-4 text-center">
+<span class="material-symbols-outlined text-primary text-[40px]">verified_user</span>
+<span class="font-label-md text-label-md font-bold">Fair Play Engine</span>
+</div>
+<div class="flex flex-col items-center gap-4 text-center">
+<span class="material-symbols-outlined text-primary text-[40px]">stars</span>
+<span class="font-label-md text-label-md font-bold">Achievements</span>
+</div>
+<div class="flex flex-col items-center gap-4 text-center">
+<span class="material-symbols-outlined text-primary text-[40px]">trophy</span>
+<span class="font-label-md text-label-md font-bold">Leaderboards</span>
+</div>
+<div class="flex flex-col items-center gap-4 text-center">
+<span class="material-symbols-outlined text-primary text-[40px]">explore</span>
+<span class="font-label-md text-label-md font-bold">Quests</span>
+</div>
+<div class="flex flex-col items-center gap-4 text-center">
+<span class="material-symbols-outlined text-primary text-[40px]">notifications_active</span>
+<span class="font-label-md text-label-md font-bold">Live Alerts</span>
+</div>
+<div class="flex flex-col items-center gap-4 text-center">
+<span class="material-symbols-outlined text-primary text-[40px]">summarize</span>
+<span class="font-label-md text-label-md font-bold">Custom Reports</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex flex-col lg:flex-row gap-12 items-center">
+<div class="w-full lg:w-1/3">
+<h2 class="font-headline-xl text-headline-xl font-bold mb-6">Built for Automotive Leaders</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Hear how the world's most successful dealerships are using DealerVerse AI to scale operations.</p>
+<div class="mt-8 flex gap-2">
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-white transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-white transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-white p-10 rounded-3xl border border-outline-variant shadow-sm">
+<div class="flex gap-1 text-primary mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface mb-8 italic">"Since implementing DealerVerse, our average delivery turnaround has dropped by 3 days. The team is more motivated than ever."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container"></div>
+<div>
+<p class="font-label-md text-label-md font-bold">James Thompson</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">GM, Sterling Motors</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-10 rounded-3xl border border-outline-variant shadow-sm">
+<div class="flex gap-1 text-primary mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface mb-8 italic">"The AI Fair Play engine solved our internal lead disputes overnight. Transparency is now our biggest cultural asset."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container"></div>
+<div>
+<p class="font-label-md text-label-md font-bold">Sarah Chen</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Operations Director, Global Auto</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-24 bg-white">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl font-bold mb-4">Flexible Pricing for Every Scale</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Choose the plan that fits your group's operational volume.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Starter -->
+<div class="p-8 rounded-3xl border border-outline-variant flex flex-col hover:border-primary transition-colors">
+<h3 class="font-headline-md text-headline-md font-bold mb-2">Starter</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-6">For single location dealerships</p>
+<div class="mb-8">
+<span class="font-headline-xl text-headline-xl font-black">$499</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Mission Center Tracking
+                            </li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Basic Leaderboards
+                            </li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Email Support
+                            </li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-outline-variant font-bold hover:bg-surface-container transition-all">Get Started</button>
+</div>
+<!-- Professional -->
+<div class="p-10 rounded-3xl bg-primary text-on-primary flex flex-col transform md:-translate-y-4 shadow-2xl">
+<div class="bg-white/20 text-xs font-bold px-3 py-1 rounded-full w-fit mb-4">MOST POPULAR</div>
+<h3 class="font-headline-md text-headline-md font-bold mb-2">Professional</h3>
+<p class="font-label-sm text-label-sm text-on-primary-container mb-6">For high-growth dealer groups</p>
+<div class="mb-8">
+<span class="font-headline-xl text-headline-xl font-black">$1,299</span>
+<span class="text-on-primary-container">/mo</span>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined">check_circle</span>
+                                AI Predictive Insights
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined">check_circle</span>
+                                Fair Play Engine
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined">check_circle</span>
+                                Advanced Gamification
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined">check_circle</span>
+                                API Access
+                            </li>
+</ul>
+<button class="w-full py-4 rounded-xl bg-white text-primary font-bold hover:bg-surface-container transition-all">Start 14-Day Free Trial</button>
+</div>
+<!-- Enterprise -->
+<div class="p-8 rounded-3xl border border-outline-variant flex flex-col hover:border-primary transition-colors">
+<h3 class="font-headline-md text-headline-md font-bold mb-2">Enterprise</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-6">For nationwide franchises</p>
+<div class="mb-8">
+<span class="font-headline-xl text-headline-xl font-black">Custom</span>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Multi-Store Management
+                            </li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                White-label Achievements
+                            </li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Dedicated Success Manager
+                            </li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-outline-variant font-bold hover:bg-surface-container transition-all">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Accordion -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-3xl mx-auto px-gutter">
+<h2 class="font-headline-xl text-headline-xl font-bold text-center mb-16">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<div class="p-6 bg-white rounded-2xl border border-outline-variant cursor-pointer group">
+<div class="flex justify-between items-center">
+<h4 class="font-label-md text-label-md font-bold">How long does implementation take?</h4>
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform">expand_more</span>
+</div>
+<p class="mt-4 font-body-md text-body-md text-on-surface-variant hidden group-hover:block transition-all">Standard implementation for a single rooftop takes approximately 7-10 days, including data migration and staff training.</p>
+</div>
+<div class="p-6 bg-white rounded-2xl border border-outline-variant cursor-pointer group">
+<div class="flex justify-between items-center">
+<h4 class="font-label-md text-label-md font-bold">Does it integrate with my existing DMS?</h4>
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform">expand_more</span>
+</div>
+<p class="mt-4 font-body-md text-body-md text-on-surface-variant hidden group-hover:block transition-all">Yes, we support native integrations with major DMS providers including CDK, Reynolds &amp; Reynolds, and more.</p>
+</div>
+<div class="p-6 bg-white rounded-2xl border border-outline-variant cursor-pointer group">
+<div class="flex justify-between items-center">
+<h4 class="font-label-md text-label-md font-bold">Is my dealership's data secure?</h4>
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform">expand_more</span>
+</div>
+<p class="mt-4 font-body-md text-body-md text-on-surface-variant hidden group-hover:block transition-all">We use bank-grade AES-256 encryption and are SOC2 Type II compliant to ensure your data remains protected.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-32 relative overflow-hidden bg-primary">
+<div class="max-w-container-max mx-auto px-gutter text-center relative z-10">
+<h2 class="font-headline-xl text-[40px] md:text-[56px] font-extrabold text-on-primary mb-8">Ready to Modernize Your Dealership?</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed mb-12 max-w-2xl mx-auto">Join hundreds of high-performing dealerships already using DealerVerse AI to dominate their market.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<button class="bg-white text-primary px-10 py-5 rounded-xl font-label-md text-label-md font-bold hover:shadow-2xl transition-all hover:scale-105 active:scale-95">Request My Demo</button>
+<button class="bg-transparent border border-primary-fixed text-on-primary px-10 py-5 rounded-xl font-label-md text-label-md font-bold hover:bg-white/10 transition-all">Contact Sales</button>
+</div>
+</div>
+<!-- Background Decoration -->
+<div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+<div class="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+<div class="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="py-20 bg-white border-t border-outline-variant">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
+<div class="col-span-2">
+<span class="font-headline-md text-headline-md font-black text-primary mb-6 block">DealerVerse AI</span>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mb-8">Empowering automotive dealerships with intelligent workflows and real-time performance insights.</p>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">link</span></a>
+</div>
+</div>
+<div>
+<h5 class="font-label-md text-label-md font-bold mb-6">Product</h5>
+<ul class="space-y-4">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Mission Center</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">AI Insights</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Fair Play</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Integrations</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md font-bold mb-6">Company</h5>
+<ul class="space-y-4">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Press Kit</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md font-bold mb-6">Support</h5>
+<ul class="space-y-4">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Documentation</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Status</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-10 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="font-label-md text-label-md text-on-surface-variant">© 2024 DealerVerse AI Inc. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Cookie Policy</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for pricing hover
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('shadow-2xl', 'scale-105');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('shadow-2xl', 'scale-105');
+            });
+        });
+
+        // Simple smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>
